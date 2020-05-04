@@ -1,0 +1,62 @@
+<nav class="navbar fixed-top navbar-light justify-content-md-center navBarTop">
+  <a class="navbar-brand text-white" href="#">AsyncValidator Example</a>
+</nav>
+
+<div class="container center">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate class="backForm flex-container">
+      <div class="form-group form-row">
+        <div class="col-sm">
+          <label for="username">Nome</label>
+          <input type="text" class="form-control" name="username" id="username" formControlName="username" placeholder="Digite seu nome"/>
+          <span class="text-danger small"
+                *ngIf="(loginFormControl.username.touched || enviado)
+                        && loginFormControl.username.errors?.required">
+            O campo nome é obrigatório!
+          </span>
+          <span class="text-danger small"
+                *ngIf="loginFormControl.username.errors?.nameAlreadyExists">
+            O nome {{loginFormControl.username.value}} já existe!
+          </span>
+        </div>
+      </div>
+      <div class="form-group form-row">
+        <div class="col-sm">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" id="email" formControlName="email" placeholder="Digite seu email"/>
+          <span class="text-danger small"
+                *ngIf="(loginFormControl.email.touched || enviado)
+                        && loginFormControl.email.errors?.required">
+            O campo email é obrigatório!
+          </span>
+        </div>
+      </div>
+      <div class="form-group form-row">
+        <div class="col-sm">
+          <label for="password">Senha</label>
+          <input type="password" class="form-control" name="password" id="password" formControlName="password" placeholder="Digite sua senha"/>
+          <span class="text-danger small"
+                *ngIf="(loginFormControl.password.touched || enviado)
+                        && loginFormControl.password.errors?.required">
+            O campo password é obrigatório!
+          </span>
+        </div>
+      </div>
+
+      <div class="form-row mt-4">
+        <div class="col-sm flex-column-reverse">
+          <button type="submit" class="btn btn-secondary btnLeft">Enviar</button>
+        </div>
+      </div>
+    </form>
+
+</div>
+
+<!-- Footer -->
+<footer class="page-footer fixed-bottom font-small bg-dark">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3 text-white">© 2020 Copyright:
+    <a href="https://github.com/Mathtzt"> Mathtzt.Github</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
